@@ -1,0 +1,29 @@
+.mis-libros{
+    background-color: #f9f9fb;
+    width: 95%;
+    margin: 1em auto;
+    border-radius: 1em ;
+    height: 20em;
+}
+.formulario{
+    display: grid;
+
+}
+.crearLibro{
+    width: 80%;
+    margin: 2em auto;
+}
+.crearLibro >h2{
+    text-align: center;
+    color: black;
+}
+label{
+    font-weight: bold;
+    margin: 0.5em 0;
+}
+input[type=text]{
+    border-radius: 8px;
+    padding: .7em;
+    border: 1px solid #c9c9c9;
+    background-color: #f9f9fb;
+}

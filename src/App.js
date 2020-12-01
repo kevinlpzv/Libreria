@@ -1,24 +1,62 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useEffect, useState} from 'react';
+import { projectFirestore } from './firebase/config';
+
+import Navbar from './componentes/Navbar/navbar';
+import MisLibros from './Paginas/MisLibros';
+import Crearlibro from './Paginas/CrearLibro';
+import EditarLibro from './Paginas/EditarLibro';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
+  const [libros, setLibros] = useState([]);
+  const [libro, setLibro] = useState({});
+
+  console.log('LIBRO A EDITAR:');
+  console.log(libro);
+  useEffect(
+    function () {
+      projectFirestore
+        .collection('Libros')
+        .get()
+        .then((querySnapshot) => {
+          const data = querySnapshot.docs.map((doc) => {
+            return { id: doc.id, ...doc.data() };
+          });
+          console.log(data);
+          setLibros(data);
+        });
+    },
+    [libros]
+  );
+  console.log('AQUI ESTAN LOS LIBROS ' + libros);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className='App'>
+        <Navbar />
+        <Switch>
+          <Route path='/Mis_Libros'>
+            <MisLibros
+              libros={libros}
+              setLibros={setLibros}
+              setLibro={setLibro}
+            />
+          </Route>
+          <Route path='/Crear_libros'>
+            <Crearlibro />
+          </Route>
+          <Route path='/Editar_libro'>
+            <EditarLibro
+              libro={libro}
+              setLibro={setLibro}
+              setLibros={setLibros}
+              libros={libros}
+            />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

@@ -1,0 +1,23 @@
+.navbar{
+ background: linear-gradient(144deg, rgb(8, 10, 122) 35%, rgb(45, 8, 94) 65%);
+ height: 100vh;
+}
+h2{
+    font-size: 1.3em;
+}
+h1,a,h2{
+ color: white;
+}
+a{
+    text-decoration: none;
+}
+.contenedor{
+    padding: 2em;
+}
+.links{
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+}
+.BtnDiv{
+    margin-top: 2em;
+}
