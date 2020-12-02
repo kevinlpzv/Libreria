@@ -8,7 +8,7 @@ const Eliminar = (props) => {
     const libros = props.libros;
     const handleClick = async (e)=>{
 
-            await projectFirestore.collection("Libro").doc(id).delete();
+            await projectFirestore.collection("Libros").doc(id).delete();
             const librosRestantes = libros.filter(function(libro){
                 return(
                     libro.id !== id  

@@ -6,10 +6,12 @@ const Libro = (props) => {
   const libros = props.libros;
   const setLibros = props.setLibros;
   const setLibro = props.setLibro;
-
+  console.log(libros.lenght);
+  console.log(libros);
   return (
     <>
-      {libros.map((libro) => {
+     
+       {libros.map((libro) => {
         return (
           <div key={libro.id}>
             <div className='ListaLibros'>

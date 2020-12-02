@@ -6,12 +6,13 @@ const ContenedorLibros = ({ libros, setLibros, setLibro }) => {
   return (
     <div className='ContenedorLibros'>
       <h2>Mis libros</h2>
-      { libros.length === 0 && (
+      {libros.length === 0 && (
         <React.Fragment>
           <p>No hay libros registrados</p>
           <Crear EsLink={true} />
         </React.Fragment>
       )}
+     
       <Libro libros={libros} setLibros={setLibros} setLibro={setLibro} />
     </div>
   );
